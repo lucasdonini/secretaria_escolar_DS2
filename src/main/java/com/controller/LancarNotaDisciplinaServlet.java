@@ -18,7 +18,7 @@ import java.util.UUID;
 @WebServlet(LancarNotaDisciplinaServlet.PATH)
 public class LancarNotaDisciplinaServlet extends HttpServlet {
 
-    public static final String PATH = "/app/lancar-nota";
+    public static final String PATH = "/professor/lancar-nota";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,23 +34,20 @@ public class LancarNotaDisciplinaServlet extends HttpServlet {
         var nota = Nota.builder().n1(n1).n2(n2).disciplina(disciplina).build();
 
 
-
-
-        try(var alunoDao = new AlunoDAO();
-            var notaDao = new NotasDAO();
+        try(var notaDao = new NotasDAO();
             var professorDao = new ProfessorDAO();
         ){
             var professor = professorDao.buscarPorUsuario(usuario);
 
             if ( professor == null || !professor.getDisciplinas().contains(codDisciplina) )throw new RuntimeException();
             else{
-                var aluno = alunoDao.buscarPorMatricula(matricula);
                 notaDao.atualizarNota(matricula, nota);
             }
 
         }catch (Throwable e){
             e.printStackTrace(System.err);
-            req.getRequestDispatcher("erro.jsp");
+            req.setAttribute("mensagemErro", "A nota não foi lançada!");
+            req.getRequestDispatcher("erroLancarNota.jsp").forward(req, resp);
         }
 
     }

@@ -14,12 +14,12 @@ import java.io.IOException;
 @WebServlet(PreCadastroAlunoServlet.PATH)
 public class PreCadastroAlunoServlet extends HttpServlet{
 
-    public static final String PATH = "/login/cadastroAluno";
+    public static final String PATH = "/login/pre-cadastro-do-aluno";
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         var nome = req.getParameter("nome");
-        UUID matricula = UUID.fromString(req.getParameter("matricula"));
+        var matricula = UUID.fromString(req.getParameter("matricula"));
         var email = req.getParameter("email");
 
         try (var dao = new AlunoDAO()) {
@@ -27,7 +27,8 @@ public class PreCadastroAlunoServlet extends HttpServlet{
 
         } catch (Throwable e) {
             e.printStackTrace(System.err);
-            req.getRequestDispatcher("erro.jsp");
+            req.setAttribute("mensagemErro", "Aluno não foi cadastrado");
+            req.getRequestDispatcher("erroPreCadastroAluno.jsp").forward(req, resp);
         }
 
     }

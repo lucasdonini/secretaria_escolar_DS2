@@ -18,14 +18,14 @@ public class BuscarAlunoMatriculaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        UUID matricula = UUID.fromString(req.getParameter("matricula"));
+        var matricula = UUID.fromString(req.getParameter("matricula"));
 
         try(var alunoDao = new AlunoDAO()){
             var aluno = alunoDao.buscarPorMatricula(matricula);
 
-
+            //ENVIANDO PARA O JSP
             req.setAttribute("aluno", aluno);
-            req.getRequestDispatcher("buscarPorMatricula.jsp");
+            req.getRequestDispatcher("buscarPorMatricula.jsp").forward(req, resp);
 
         }catch (Throwable e){
             e.printStackTrace(System.err);

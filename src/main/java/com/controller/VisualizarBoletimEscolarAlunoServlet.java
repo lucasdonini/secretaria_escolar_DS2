@@ -32,11 +32,12 @@ public class VisualizarBoletimEscolarAlunoServlet extends HttpServlet {
             req.setAttribute("mediaFinal", aluno.mediaFinal());
 
             //enviando jsp
-            req.getRequestDispatcher("visualizarBoletimAluno.jsp");
+            req.getRequestDispatcher("visualizarBoletimAluno.jsp").forward(req, resp);
 
         }catch (Throwable e){
             e.printStackTrace(System.err);
-            req.getRequestDispatcher("erro.jsp");
+            req.setAttribute("mensagemErro", "A abertura do boletim não pôde ser realizada!");
+            req.getRequestDispatcher("erroVisualizarBoletimAluno.jsp").forward(req, resp);
         }
 
 

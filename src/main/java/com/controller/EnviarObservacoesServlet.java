@@ -28,13 +28,14 @@ public class EnviarObservacoesServlet extends HttpServlet {
 
         var observacao = Observacao.builder().id(id).idRemetente(idRemetente).idDestinatario(idDestinatario).mensagem(mensagem).dataEnvio(dataEnvio).build();
 
-        try(var dao = new ObservacaoDAO()){
+        try(var observacaoDao = new ObservacaoDAO()){
 
-            dao.registrarObservacao(observacao);
+            observacaoDao.registrarObservacao(observacao);
 
         }catch (Throwable e){
             e.printStackTrace(System.err);
-            req.getRequestDispatcher("erro.jsp");
+            req.setAttribute("mensagemErro", "Observação não lançada!");
+            req.getRequestDispatcher("erroLancarObservacao.jsp").forward(req, resp);
         }
 
     }
