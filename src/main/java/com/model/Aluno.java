@@ -30,4 +30,8 @@ public class Aluno {
     private HashSet<Nota> notas;
 
     private Stack<Observacao> observacoes;
+
+    public double mediaFinal() {
+        return notas.stream().mapToDouble(Nota::media).average().orElse(0);
+    }
 }
