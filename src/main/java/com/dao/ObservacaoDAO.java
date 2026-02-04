@@ -9,7 +9,7 @@ import java.util.Stack;
 import java.util.UUID;
 
 public class ObservacaoDAO extends DAO {
-    protected ObservacaoDAO() throws SQLException {
+    public ObservacaoDAO() throws SQLException {
         super();
     }
 
