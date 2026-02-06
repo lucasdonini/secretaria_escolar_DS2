@@ -20,11 +20,11 @@ public class EnviarObservacoesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        var id = UUID.fromString(req.getParameter("id"));
+        var id = UUID.randomUUID();
         var idRemetente = UUID.fromString(req.getParameter("idremetente"));
         var idDestinatario = UUID.fromString(req.getParameter("idDestinatario"));
         var mensagem = req.getParameter("mensagem");
-        var dataEnvio = LocalDateTime.parse(req.getParameter("dataEnvio"));
+        var dataEnvio = LocalDateTime.now();
 
         var observacao = Observacao.builder().id(id).idRemetente(idRemetente).idDestinatario(idDestinatario).mensagem(mensagem).dataEnvio(dataEnvio).build();
 
