@@ -46,7 +46,7 @@ public class AlunoDAO extends DAO {
     }
 
     public void preCadastrar(String nome, UUID matricula, String usuario) throws SQLException {
-        var sql = "INSERT INTO aluno(nome, matricula, usuario) VALUES (?, ?, ?)";
+        var sql = "INSERT INTO aluno(nome, matricula, usuario, email, senha) VALUES (?, ?, ?, NULL, NULL)";
 
         try (var pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, nome);

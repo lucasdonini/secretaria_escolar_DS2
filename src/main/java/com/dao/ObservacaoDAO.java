@@ -22,7 +22,7 @@ public class ObservacaoDAO extends DAO {
 
     public void carregarObservacoes(Aluno aluno) throws SQLException {
         var sql = """
-                SELECT o.id_remetente, o.mensagem, o.data_envio FROM observacao o
+                SELECT o.id_remetente, o.mensagem, o.data_envio FROM observacoes o
                 JOIN aluno a ON a.matricula = o.id_destinatario
                 WHERE a.matricula = ?
                 ORDER BY o.data_envio

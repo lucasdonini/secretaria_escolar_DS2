@@ -17,7 +17,7 @@ public class NotasDAO extends DAO {
     }
 
     private static Nota resultSetParaNota(ResultSet rs) throws SQLException {
-        var disciplina = Disciplina.deCodigo(rs.getInt("cod_materia"));
+        var disciplina = Disciplina.deCodigo(rs.getInt("id_disciplina"));
         return Nota.builder()
                 .n1(rs.getDouble("n1"))
                 .n2(rs.getDouble("n2"))
@@ -26,7 +26,7 @@ public class NotasDAO extends DAO {
     }
 
     public void carregarNotas(Aluno aluno) throws SQLException {
-        var sql = "SELECT n1, n2, cod_materia FROM notas WHERE matricula_aluno = ?";
+        var sql = "SELECT n1, n2, id_disciplina FROM notas WHERE id_aluno = ?";
         try (var pstmt = conn.prepareStatement(sql)) {
             pstmt.setObject(1, aluno.getMatricula());
 
@@ -41,7 +41,7 @@ public class NotasDAO extends DAO {
 
     public void atualizarNota(UUID matriculaAluno, Nota nota) throws SQLException {
         var codDisciplina = nota.getDisciplina().getCodigo();
-        var sql = "UPDATE notas SET n1 = ?, n2 = ? WHERE matricula_aluno = ? AND cod_materia = ?";
+        var sql = "UPDATE notas SET n1 = ?, n2 = ? WHERE id_aluno = ? AND id_disciplina = ?";
 
         try (var pstmt = conn.prepareStatement(sql)) {
             pstmt.setDouble(1, nota.getN1());
@@ -56,20 +56,20 @@ public class NotasDAO extends DAO {
 
     public List<Nota> buscarNotasPorProfessor(Professor professor) throws SQLException {
         var sql = """
-                SELECT n.n1, n.n2, n.cod_materia
-                FROM nota n
-                JOIN disciplina d ON d.codigo = n.cod_materia
-                WHERE n.cod_materia = ?
+                SELECT n.n1, n.n2, n.id_disciplina
+                FROM notas n
+                JOIN disciplina d ON d.codigo = n.id_disciplina
+                JOIN professor_disciplina pd ON d.codigo = pd.id_disciplina
+                WHERE pd.id_professor = ?
                 """;
 
         var notas = new ArrayList<Nota>();
         try (var pstmt = conn.prepareStatement(sql)) {
-            for (var disciplina : professor.getDisciplinas()) {
-                var codigo = disciplina.getCodigo();
-                pstmt.setInt(1, codigo);
-
-                try (var rs = pstmt.executeQuery()) {
-                    while (rs.next()) notas.add(resultSetParaNota(rs));
+            pstmt.setObject(1, professor.getId());
+            try (var rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    var nota = resultSetParaNota(rs);
+                    notas.add(nota);
                 }
             }
 

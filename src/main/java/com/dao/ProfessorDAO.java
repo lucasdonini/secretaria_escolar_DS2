@@ -11,7 +11,12 @@ public class ProfessorDAO extends DAO {
     }
 
     public Professor buscarPorUsuario(String usuario) throws SQLException {
-        var sql = "SELECT senha, nome, disciplina FROM professor WHERE usuario = ?";
+        var sql = """
+                SELECT p.senha, p.nome, pd.id_disciplina
+                FROM professor p
+                JOIN professor_disciplina pd ON p.id = pd.id_professor
+                WHERE p.usuario = ?
+                """;
 
         try(var pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, usuario);
@@ -24,7 +29,7 @@ public class ProfessorDAO extends DAO {
                         .nome(rs.getString("nome"))
                         .build();
 
-                var disciplina = Disciplina.deCodigo(rs.getInt("disciplina"));
+                var disciplina = Disciplina.deCodigo(rs.getInt("id_disciplina"));
                 professor.adicionarDisciplina(disciplina);
 
                 return professor;
