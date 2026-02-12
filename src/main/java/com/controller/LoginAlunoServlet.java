@@ -28,7 +28,8 @@ public class LoginAlunoServlet extends HttpServlet {
             // TODO: resposta positiva
         } catch (Throwable e) {
             e.printStackTrace(System.err);
-            // TODO: resposta negativa
+            req.setAttribute("mensagemErro", "O Login não foi efetuado");
+            req.getRequestDispatcher("erro.jsp").forward(req, resp);
         }
     }
 }

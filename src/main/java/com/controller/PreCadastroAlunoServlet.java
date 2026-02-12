@@ -28,7 +28,7 @@ public class PreCadastroAlunoServlet extends HttpServlet{
         } catch (Throwable e) {
             e.printStackTrace(System.err);
             req.setAttribute("mensagemErro", "Aluno não foi cadastrado");
-            req.getRequestDispatcher("erroPreCadastroAluno.jsp").forward(req, resp);
+            req.getRequestDispatcher("erro.jsp").forward(req, resp);
         }
 
     }

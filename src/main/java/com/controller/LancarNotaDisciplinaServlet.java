@@ -47,7 +47,7 @@ public class LancarNotaDisciplinaServlet extends HttpServlet {
         }catch (Throwable e){
             e.printStackTrace(System.err);
             req.setAttribute("mensagemErro", "A nota não foi lançada!");
-            req.getRequestDispatcher("erroLancarNota.jsp").forward(req, resp);
+            req.getRequestDispatcher("erro.jsp").forward(req, resp);
         }
 
     }

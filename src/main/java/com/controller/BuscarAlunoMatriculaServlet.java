@@ -30,7 +30,7 @@ public class BuscarAlunoMatriculaServlet extends HttpServlet {
         }catch (Throwable e){
             e.printStackTrace(System.err);
             req.setAttribute("mensagemErro", "Aluno não encontrado");
-            req.getRequestDispatcher("erroBuscarAlunoMatricula.jsp").forward(req, resp);
+            req.getRequestDispatcher("erro.jsp").forward(req, resp);
         }
 
     }

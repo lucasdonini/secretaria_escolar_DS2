@@ -34,7 +34,7 @@ public class VisualizarObservacoesAlunosServlet extends HttpServlet {
         }catch (Throwable e){
             e.printStackTrace(System.err);
             req.setAttribute("mensagemErro", "As observações não foram encontradas!");
-            req.getRequestDispatcher("erroVisualizarObservacoes.jsp").forward(req, resp);
+            req.getRequestDispatcher("erro.jsp").forward(req, resp);
         }
     }
 }

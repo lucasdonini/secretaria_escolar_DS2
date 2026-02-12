@@ -35,7 +35,7 @@ public class EnviarObservacoesServlet extends HttpServlet {
         }catch (Throwable e){
             e.printStackTrace(System.err);
             req.setAttribute("mensagemErro", "Observação não lançada!");
-            req.getRequestDispatcher("erroLancarObservacao.jsp").forward(req, resp);
+            req.getRequestDispatcher("erro.jsp").forward(req, resp);
         }
 
     }

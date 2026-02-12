@@ -35,7 +35,7 @@ public class VisualizarNotasAlunoServlet extends HttpServlet {
         }catch (Throwable e){
             e.printStackTrace();
             req.setAttribute("mensagemErro", "As notas não poduram ser abertas!");
-            req.getRequestDispatcher("erroVisualizarNotasAluno.jsp").forward(req, resp);
+            req.getRequestDispatcher("erro.jsp").forward(req, resp);
         }
 
     }

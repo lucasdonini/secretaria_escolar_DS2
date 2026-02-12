@@ -44,7 +44,7 @@ public class VisualizarNotasEObservcoesServlet extends HttpServlet {
         }catch (Throwable e){
             e.printStackTrace();
             req.setAttribute("mensagemErro", "Erro ao tentar abrir as notas e observações");
-            req.getRequestDispatcher("erroVisualizarNotasEObservacoes.jsp").forward(req, resp);
+            req.getRequestDispatcher("erro.jsp").forward(req, resp);
         }
     }
 }

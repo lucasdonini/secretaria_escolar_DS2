@@ -37,7 +37,7 @@ public class VisualizarBoletimEscolarAlunoServlet extends HttpServlet {
         }catch (Throwable e){
             e.printStackTrace(System.err);
             req.setAttribute("mensagemErro", "A abertura do boletim não pôde ser realizada!");
-            req.getRequestDispatcher("erroVisualizarBoletimAluno.jsp").forward(req, resp);
+            req.getRequestDispatcher("erro.jsp").forward(req, resp);
         }
 
 
