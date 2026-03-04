@@ -1,0 +1,360 @@
+* {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    bottom: 0;
+    font-family: Poppins, sans-serif;
+}
+
+body {
+    background-color: #F7F7F8;
+}
+
+header {
+    background-color: #F7F7F8;
+    padding: 10px 55px 20px 55px;
+    box-shadow: 0px 1px 6px rgb(170, 170, 170);
+    height: 40px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#logo {
+    width: 140px;
+    height: 50px;
+}
+
+#professor {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#professor img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#professor p {
+    font-size: 14px;
+}
+
+/* MAIN */
+
+main {
+    margin-left: 88px;
+    margin-right: 88px;
+    margin-top: 30px;
+}
+
+#btn-voltar {
+    width: min-content;
+    padding: 8px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #585858;
+    font-size: 18px;
+    cursor: pointer
+}
+
+#btn-voltar:hover {
+    color: #ffffff;
+    background-color: #8E00FF;
+    transform: scale(1.05);
+    transition: all 0.3s ease-out;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    width: min-content;
+}
+
+/* DADOS DO ALUNO */
+
+.bloco-aluno {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+    background-color: #8E00FF;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+#icone-user {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #B48FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#icone-user i {
+    font-size: 60px;
+}
+
+/* ABAS DE NOTAS E OBSERVAÇÕES */
+.options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+#aba-notas,
+.options a {
+    width: 49%;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 0px 1px 6px rgb(170, 170, 170);
+}
+
+#aba-notas {
+    background-color: #8E00FF;
+    color: white;
+}
+
+.options a:hover {
+    background-color: #8E00FF;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+#aba-observações {
+    display: flex;
+    gap: 15px;
+}
+
+#pre-notas {
+    align-items: center;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#btn-adicionar-nota {
+    border: none;
+    background-color: #8E00FF;
+    width: 190px;
+    padding: 8px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer
+}
+
+#btn-adicionar-nota:hover {
+    background-color: #B48FFF;
+    transform: scale(1.05);
+    transition: all 0.3s ease-out;
+}
+
+#btn-adicionar-nota i {
+    font-size: 20px;
+}
+
+#box-adicionar-nota {
+    display: none;
+    /* começa escondida */
+    background: #F7F7F8;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 6px rgb(170, 170, 170);
+    margin-top: 20px;
+}
+
+.inputs-nota {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.inputs-nota input,
+.inputs-nota select {
+    width: 48%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.botoes-nota {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+#cancelar-nota,
+#salvar-nota {
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#cancelar-nota {
+    background-color: #D9D9D9;
+    color: #000000;
+}
+
+#cancelar-nota:hover {
+    background-color: #888888;
+    color: white;
+    transition: all 0.3s ease-out;
+}
+
+#salvar-nota {
+    background-color: #8E00FF;
+    color: white;
+}
+
+#salvar-nota:hover {
+    background-color: #B48FFF;
+    transition: all 0.3s ease-out;
+}
+
+#box-editar-nota {
+    display: none;
+    /* começa escondida */
+    background: #F7F7F8;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 6px rgb(170, 170, 170);
+    margin-top: 20px;
+}
+
+#bloco-digitar-nota {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+#box-editar-nota input {
+    width: 50%;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+#cancelar-edicao:hover {
+    background-color: #888888;
+    color: white;
+    transition: all 0.3s ease-out;
+}
+
+#salvar-edicao {
+    background-color: #8E00FF;
+    color: white;
+}
+
+#salvar-edicao:hover {
+    background-color: #B48FFF;
+    transition: all 0.3s ease-out;
+}
+
+.botoes {
+    display: flex;
+    gap: 10px;
+}
+
+.botoes button {
+    padding: 8px 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#cancelar-edicao {
+    background-color: #D9D9D9;
+    color: #000000;
+}
+
+#cancelar-edicao:hover {
+    background-color: #888888;
+    color: white;
+    transition: all 0.3s ease-out;
+}
+
+#salvar-edicao {
+    background-color: #8E00FF;
+    color: white;
+}
+
+#salvar-edicao:hover {
+    background-color: #B48FFF;
+    transition: all 0.3s ease-out;
+}
+/* NOTAS */
+
+.notas-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 70px;
+}
+
+.nota-card {
+    height: 100px;
+    width: 100%;
+    background-color: #F7F7F8;
+    padding: 1px;
+    margin-bottom: 1px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 6px rgb(170, 170, 170);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nota-card p {
+    padding: 15px 30px 15px 30px;
+    font-size: 18px;
+}
+
+.edit-grade-and-grade {
+    display: flex;
+    gap: 25px;
+    margin-left: auto;
+    margin-right: 15px;
+    align-items: center;
+}
+
+.edit-grade-and-grade i {
+    font-size: 20px;
+    color: #585858;
+    cursor: pointer;
+}
+
+.edit-grade-and-grade i:hover {
+    color: #8E00FF;
+    transition: all 0.2s ease-out;
+}
+
+.edit-grade-and-grade p {
+    background-color: #CCCCCC;
+    border-radius: 10px;
+    width: 40px;
+    color: #000000;
+    text-align: center;
+}

@@ -1,0 +1,238 @@
+*{
+    font-family: "Poppins", sans-serif;
+    margin: 0%;
+    padding: 0%;
+}
+
+body{
+    background-color: #ebebeb;
+
+}
+
+/* HEADER */
+
+header{
+    width: 100%;
+    height: 70px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#logo{
+    width: 150px;
+    height: 50px;
+    margin-top: 10px;
+    margin-left: 40px;
+}
+
+#info-aluno{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+#nome_classe{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    line-height: 0cm;
+}
+
+#perfil{
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+.text-nome{
+    font-weight: bold;
+}
+.text-aluno{
+    color: gray;
+    margin-top: 20px;
+    font-size: small;
+}
+
+/* MAIN */
+main {
+    margin-top: 30px;
+    margin-bottom: 70px;
+    margin-left: 88px;
+    margin-right: 88px;
+}
+
+#btn-voltar {
+    width: min-content;
+    padding: 8px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #585858;
+    font-size: 18px;
+    cursor: pointer
+}
+
+#btn-voltar:hover {
+    color: #ffffff;
+    background-color: #8E00FF;
+    transform: scale(1.05);
+    transition: all 0.3s ease-out;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    width: min-content;
+}
+
+/* PÁGINAS */
+
+#apresentacao_informacoes{  /* primeira section */
+    margin-top: 20px;
+}
+
+.setores-img{
+    width: 20px;
+}
+
+.titulo-text{
+    font-weight: bolder;
+}
+.subtitulo-text{
+    color: rgb(78, 77, 77);
+    font-size: 21px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+#aba-notas,
+.options a {
+    width: 49%;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 0px 1px 6px rgb(170, 170, 170);
+}
+
+#aba-notas {
+    background-color: #8E00FF;
+    color: white;
+}
+
+.options a:hover {
+    background-color: #8E00FF;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+#aba-observações {
+    display: flex;
+    gap: 15px;
+}
+
+
+
+
+/* TABELA */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: auto;
+    margin-top: 50px;
+}
+
+
+table td{
+    height: 35px;
+}
+.table-container {
+    width: 90%;
+    margin: 40px auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Header com gradiente */
+thead {
+    background: linear-gradient(90deg, #8E00FF, #8E00FF);
+    color: white;
+}   
+
+th {
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    height: 10px;
+}
+
+/* Células */
+td {
+    height: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Zebra effect */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #e2e2e2;
+}
+
+/* Hover effect */
+tbody tr:hover {
+    background-color: #b5b5b5;
+    transition: 0.3s;
+}
+
+/* Cores da média */
+.media {
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+/* FONTES */
+.poppins-light {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colégio Mémora</title>
+    <link rel="stylesheet" href="observacoesAluno.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+    <header>
+        <img src="/src/main/webapp/WEB-INF/assets/logo.png" alt="logo do colégio Mémora" id="logo">
+
+        <div id="info-aluno">
+            <div id="nome_classe">
+                <p class="text-nome">João Ricardo Alves</p>
+                <p class="text-aluno">Aluno</p>
+            </div>
+            <img src="/src/main/webapp/WEB-INF/assets/Ellipse 9.png" alt="foto de perfil do aluno" id="perfil">
+        </div>
+
+    </header>
+
+    <main>
+        <a href=""> <!-- Colocar o link para a landing page -->
+            <div id="btn-voltar">
+                <i class="bi bi-arrow-left-circle"></i>
+                <p>Voltar</p>
+            </div>
+        </a>
+        <section id="apresentacao_informacoes">
+            <h1 class="titulo-text">Bem-vindo, João Ricardo Alves!</h1>
+            <p class="subtitulo-text">Veja suas notas e observações</p>
+
+            <div class="options">
+                <a href="/src/main/webapp/WEB-INF/Aluno/notasAluno.html">
+                    <div id="aba-notas">
+                        <i class="bi bi-journal"></i>
+                        <p>Notas</p>
+                    </div>
+                </a>
+                <div id="aba-observações">
+                    <i class="bi bi-chat-left-dots"></i>
+                    <p>Observações</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="titulo-observacoes">
+            <h2>Observações</h2>
+            <div class="quantidade">
+                <p id="contador-obs">0</p>
+            </div>
+        </section>
+
+        <section id="container-observacoes"></section>
+    </main>
+</body>
+
+</html>

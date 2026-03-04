@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colégio Mémora</title>
+    <link rel="stylesheet" href="notasAluno.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+    <header>
+        <img src="/src/main/webapp/WEB-INF/assets/logo.png" alt="logo do colégio Mémora" id="logo">
+
+        <div id="info-aluno">
+            <div id="nome_classe">
+                <p class="text-nome">João Ricardo Alves</p>
+                <p class="text-aluno">Aluno</p>
+            </div>
+            <img src="/src/main/webapp/WEB-INF/assets/Ellipse 9.png" alt="foto de perfil do aluno" id="perfil">
+        </div>
+
+    </header>
+    <main>
+        <a href=""> <!-- Colocar o link para a landing page -->
+            <div id="btn-voltar">
+                <i class="bi bi-arrow-left-circle"></i>
+                <p>Voltar</p>
+            </div>
+        </a>
+        <section id="apresentacao_informacoes">
+
+            <h1 class="titulo-text">Bem-vindo, João Ricardo Alves!</h1>
+            <p class="subtitulo-text">Veja suas notas e observações</p>
+
+            <div class="options">
+                <div id="aba-notas">
+                    <i class="bi bi-journal"></i>
+                    <p>Notas</p>
+                </div>
+                <a href="/src/main/webapp/WEB-INF/Aluno/observacoesAluno.html">
+                    <div id="aba-observações">
+                        <i class="bi bi-chat-left-dots"></i>
+                        <p>Observações</p>
+                    </div>
+                </a>
+            </div>
+
+        </section>
+
+        <section id="table-container">
+            <table border="">
+                <thead>
+                    <tr>
+                        <th>
+                            <p>Matéria</p>
+                        </th>
+                        <th>
+                            <p>Professor(a)</p>
+                        </th>
+                        <th>
+                            <p>1°Nota</p>
+                        </th>
+                        <th>
+                            <p>2°Nota</p>
+                        </th>
+                        <th>
+                            <p>MédiaFinal</p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p>Matemática</p>
+                        </td>
+                        <td>
+                            <p>Ana Souza</p>
+                        </td>
+                        <td>
+                            <p>9.0</p>
+                        </td>
+                        <td>
+                            <p>8.8</p>
+                        </td>
+                        <td>
+                            <p>8.9</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Português</p>
+                        </td>
+                        <td>
+                            <p>Carlos Lima</p>
+                        </td>
+                        <td>
+                            <p>8.3</p>
+                        </td>
+                        <td>
+                            <p>-</p>
+                        </td>
+                        <td>
+                            <p>-</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>História</p>
+                        </td>
+                        <td>
+                            <p>Juliana Rocha</p>
+                        </td>
+                        <td>
+                            <p>7.5</p>
+                        </td>
+                        <td>
+                            <p>7.7</p>
+                        </td>
+                        <td>
+                            <p>7.6</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Ciências</p>
+                        </td>
+                        <td>
+                            <p>Marcos Pereira</p>
+                        </td>
+                        <td>
+                            <p>7.0</p>
+                        </td>
+                        <td>
+                            <p>4.4</p>
+                        </td>
+                        <td>
+                            <p>5.7</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Informática</p>
+                        </td>
+                        <td>
+                            <p>Diogo Nascimento</p>
+                        </td>
+                        <td>
+                            <p>3.6</p>
+                        </td>
+                        <td>
+                            <p>9.2</p>
+                        </td>
+                        <td>
+                            <p>6.4</p>
+                        </td>
+                    </tr>
+                </tbody>
+
+
+            </table>
+        </section>
+    </main>
+
+</body>
+
+</html>
