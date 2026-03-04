@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Stack;
 import java.util.UUID;
@@ -27,7 +28,8 @@ public class Aluno {
     private String senha;
 
     @NonNull
-    private HashSet<Nota> notas;
+    @Builder.Default
+    private HashSet<Nota> notas = new HashSet<>();
 
     private Stack<Observacao> observacoes;
 

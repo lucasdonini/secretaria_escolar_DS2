@@ -30,7 +30,7 @@
             </div>
 
             <div class="acoes">
-                <a href="Login/login.jsp"><img class="botao" id="botao_entrar" src="img/botão%20entrar.png" alt="Botão Entrar"></a>
+                <a href="${pageContext.request.contextPath}/pagina-login/login.jsp"><img class="botao" id="botao_entrar" src="img/botão%20entrar.png" alt="Botão Entrar"></a>
                 <img class="botao" src="img/botão%20cadastro.png" alt="Botão Cadastro">
             </div>
 

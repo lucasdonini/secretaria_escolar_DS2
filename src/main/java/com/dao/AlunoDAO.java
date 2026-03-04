@@ -2,8 +2,11 @@ package com.dao;
 
 import com.model.Aluno;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class AlunoDAO extends DAO {
@@ -64,6 +67,24 @@ public class AlunoDAO extends DAO {
             pstmt.setString(2, senha);
             pstmt.setObject(3, matricula);
             pstmt.executeUpdate();
+        }
+    }
+
+    public List<Aluno> buscarPorProfessor(UUID idProfessor) throws SQLException {
+        var sql = "SELECT DISTINCT a.matricula, a.nome, a.email, a.usuario, a.senha, a.email " +
+                "FROM aluno a " +
+                "JOIN notas n ON n.id_aluno = a.matricula " +
+                "JOIN professor_disciplina pd ON pd.id_disciplina = n.id_disciplina " +
+                "WHERE pd.id_professor = ? " +
+                "ORDER BY a.nome";
+
+        try (var pstmt = conn.prepareStatement(sql)) {
+            pstmt.setObject(1, idProfessor);
+            try (var rs = pstmt.executeQuery()) {
+                var alunos = new ArrayList<Aluno>();
+                while (rs.next()) alunos.add(resultSetParaAluno(rs));
+                return alunos;
+            }
         }
     }
 }

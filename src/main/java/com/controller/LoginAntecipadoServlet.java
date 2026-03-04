@@ -1,9 +1,13 @@
 package com.controller;
 
 import com.dao.AlunoDAO;
+import com.dao.NotasDAO;
 import com.dao.ProfessorDAO;
 import com.model.Aluno;
 import com.model.Professor;
+import com.utils.AtributoSessao;
+import com.utils.NomeCookie;
+import com.utils.PaginaJsp;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebFilter;
@@ -12,6 +16,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.UUID;
 
 @WebFilter("/pagina-login/*")
 public class LoginAntecipadoServlet extends HttpFilter {
@@ -23,38 +28,50 @@ public class LoginAntecipadoServlet extends HttpFilter {
 
         var professorSessao = sessao.getAttribute(AtributoSessao.PROFESSOR_LOGADO);
         if (professorSessao instanceof Professor) {
-            resp.sendRedirect(contextPath + PaginasJsp.HOME_PROFESSOR);
+            resp.sendRedirect(contextPath + PaginaJsp.HOME_PROFESSOR);
             return;
         }
 
         var alunoSessao = sessao.getAttribute(AtributoSessao.ALUNO_LOGADO);
         if (alunoSessao instanceof Aluno) {
-            resp.sendRedirect(contextPath + PaginasJsp.HOME_ALUNO);
+            resp.sendRedirect(contextPath + PaginaJsp.HOME_ALUNO);
             return;
         }
 
-        var usuarioProfessor = Arrays.stream(cookies)
-                .filter(cookie -> cookie.getName().equals(NomeCookie.USUARIO_PROFESSOR_LOGADO))
+        var idProfessor = Arrays.stream(cookies)
+                .filter(cookie -> cookie.getName().equals(NomeCookie.ID_PROFESSOR_LOGADO))
                 .map(Cookie::getValue)
                 .findFirst();
 
-        if (usuarioProfessor.isPresent()) {
+        if (idProfessor.isPresent()) {
             Professor professor;
+            var id = UUID.fromString(idProfessor.get());
             try (var dao = new ProfessorDAO()) {
-                professor = dao.buscarPorUsuario(usuarioProfessor.get());
+                professor = dao.buscarPorId(id);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
 
-            if (professor == null) chain.doFilter(req, resp);
+            if (professor == null) {
+                chain.doFilter(req, resp);
+                return;
+            }
+
+            try (var alunoDao = new AlunoDAO(); var notaDao = new NotasDAO()) {
+                var alunos = alunoDao.buscarPorProfessor(professor.getId());
+                for (var aluno : alunos) notaDao.carregarNotas(aluno);
+                sessao.setAttribute(AtributoSessao.ALUNOS_PROFESSOR, alunos);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 
             sessao.setAttribute(AtributoSessao.PROFESSOR_LOGADO, professor);
-            resp.sendRedirect(contextPath + PaginasJsp.HOME_PROFESSOR);
+            resp.sendRedirect(contextPath + PaginaJsp.HOME_PROFESSOR);
             return;
         }
 
         var emailAlunoLogado = Arrays.stream(cookies)
-                .filter(cookie -> cookie.getName().equals(NomeCookie.EMAIL_ALUNO_LOGADO))
+                .filter(cookie -> cookie.getName().equals(NomeCookie.ID_ALUNO_LOGADO))
                 .map(Cookie::getValue)
                 .findFirst();
 
@@ -67,7 +84,7 @@ public class LoginAntecipadoServlet extends HttpFilter {
             }
 
             sessao.setAttribute(AtributoSessao.ALUNO_LOGADO, aluno);
-            resp.sendRedirect(contextPath + PaginasJsp.HOME_ALUNO);
+            resp.sendRedirect(contextPath + PaginaJsp.HOME_ALUNO);
             return;
         }
 
