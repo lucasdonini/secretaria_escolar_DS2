@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 
 <head>
@@ -19,7 +19,7 @@
     <!-- NAVBAR -->
     <header>
         <nav class="navbar">
-            <img id="logo" src="img/logo definitiva.png" alt="logo">
+            <img id="logo" src="img/logo%20definitiva.png" alt="logo">
 
             <div class="menu">
                 <p class="texto" id="inicio">Início</p>
@@ -30,8 +30,8 @@
             </div>
 
             <div class="acoes">
-                <img class="botao" id="botao_entrar" src="img/botão entrar.png" alt="Botão Entrar">
-                <img class="botao" src="img/botão cadastro.png" alt="Botão Cadastro">
+                <a href="Login/login.jsp"><img class="botao" id="botao_entrar" src="img/botão%20entrar.png" alt="Botão Entrar"></a>
+                <img class="botao" src="img/botão%20cadastro.png" alt="Botão Cadastro">
             </div>
 
         </nav>
@@ -43,14 +43,14 @@
 
         <!-- PÁGINA UM -->
         <div class="pag1">
-            <img id="capa_" src="img/main garota.png" alt="Garota na escola">
+            <img id="capa_" src="img/main%20garota.png" alt="Garota na escola">
             <p id="titulo_capa" class="titulo">Formando <span>grandes mentes</span><br> desde os <span>primeiros
                     passos</span>.</p>
             <p id="legenda_capa" class="texto">No Colégio Mémora, acompanhamos nossos alunos da infância ao ensino médio
                 <br> com uma educação sólida,
                 acolhedora e pensada para cada fase, formando alunos confiantes e preparados para o futuro.
             </p>
-            <button class="botao_lp"><img src="img/botão comece.png" alt="Clique aqui"></button>
+            <button class="botao_lp"><img src="img/botão%20comece.png" alt="Clique aqui"></button>
         </div>
 
 
@@ -66,19 +66,19 @@
             </div>
             <div class="carrossel">
                 <div class="carrossel1">
-                    <img class="carrossel_img" src="img/escola 1.png" alt="Jardim de Infância">
+                    <img class="carrossel_img" src="img/escola%201.png" alt="Jardim de Infância">
                     <p class="alinhar-texto" id="carr_leg">Jardim de Infância</p>
                 </div>
                 <div class="carrossel2">
-                    <img class="carrossel_img" src="img/escola 2.png" alt="Pré-escola">
+                    <img class="carrossel_img" src="img/escola%202.png" alt="Pré-escola">
                     <p class="alinhar-texto" id="carr_leg">Pré-Escola</p>
                 </div>
                 <div class="carrossel3">
-                    <img class="carrossel_img" src="img/escola 3.png" alt="Ensino Fundamental">
+                    <img class="carrossel_img" src="img/escola%203.png" alt="Ensino Fundamental">
                     <p class="alinhar-texto" id="carr_leg">Ensino Fundamental I e II</p>
                 </div>
                 <div class="carrossel4">
-                    <img class="carrossel_img" src="img/escola 4.png" alt="Ensino Médio">
+                    <img class="carrossel_img" src="img/escola%204.png" alt="Ensino Médio">
                     <p class="alinhar-texto" id="carr_leg">Ensino Médio</p>
                 </div>
             </div>
@@ -126,7 +126,7 @@
                 <p id="texto_f2">Parcerias</p>
                 <br>
                 <br>
-                <u id="texto_f2" style="background-color: transparent; font-family: 'Poppins', Arial, Helvetica, sans-serif; color: #46007E; font-weight: 600;">Trabalhe Conosco</p>
+                <u id="texto_f2" style="background-color: transparent; font-family: 'Poppins', Arial, Helvetica, sans-serif; color: #46007E; font-weight: 600;">Trabalhe Conosco</u>
             </div>
         </div>
 

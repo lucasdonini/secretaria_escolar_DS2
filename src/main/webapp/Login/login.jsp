@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="pt-br">
 
 <head>
@@ -17,7 +18,7 @@
 <body>
     <div class="container">
         <div id="imagem">
-            <img src="/src/main/webapp/WEB-INF/assets/elefante roxo.png" alt="Elefante Roxo">
+            <img src="../assets/elefante roxo.png" alt="Elefante Roxo">
         </div>
 
         <div class="form-side">
@@ -28,32 +29,33 @@
                 <h1>Acesse sua conta</h1>
             </div>
 
-            <form id="loginForm">
+            <form id="loginForm" method="post" action="${pageContext.request.contextPath}/login">
                 <div class="input">
                     <label for="username">Usuário</label>
                     <input type="text" id="username" placeholder="Digite seu nome de usuário ou e-mail" required>
                 </div>
 
                 <div class="input">
-                    <label for="password">Senha</label>
+                    <label for="senha">Senha</label>
                     <div class="campo-senha">
                         <input type="password" id="senha" placeholder="Digite sua senha" required>
                         <i class="bi bi-eye-slash" id="botao-senha" onclick="mostrarSenha()"></i>
                     </div>
                 </div>
 
-                <a href=""><button type="button" class="btn-entrar" onclick="handleLogin()">Entrar</button></a> 
-                 <!-- Fazer validação com  JSP-->
+                <button type="submit" class="btn-entrar" onclick="handleLogin()">Entrar</button>
+                <!-- Fazer validação com JSP-->
             </form>
 
             <div class="footer-link">
-                <p>Não tem acesso? <a href="/src/main/webapp/WEB-INF/Cadastro/cadastro.html">Faça seu cadastro aqui.</a></p>
+                <p>Não tem acesso? <a href="../Cadastro/cadastro.html">Faça seu cadastro aqui.</a></p>
             </div>
         </div>
+        <c:if test="${not empty requestScope.mensagemErro}">
+            ${requestScope.mensagemErro}
+        </c:if>
     </div>
-    <script src="/src/main/webapp/WEB-INF/Login/login.js"></script>
+    <script src="login.js"></script>
 </body>
-
-</html>
 
 </html>
