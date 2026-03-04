@@ -32,13 +32,13 @@
             <form id="loginForm" method="post" action="${pageContext.request.contextPath}/login">
                 <div class="input">
                     <label for="username">Usuário</label>
-                    <input type="text" id="username" placeholder="Digite seu nome de usuário ou e-mail" required>
+                    <input type="text" id="username" name="usuario" placeholder="Digite seu nome de usuário ou e-mail" required>
                 </div>
 
                 <div class="input">
                     <label for="senha">Senha</label>
                     <div class="campo-senha">
-                        <input type="password" id="senha" placeholder="Digite sua senha" required>
+                        <input name="senha" type="password" id="senha" placeholder="Digite sua senha" required>
                         <i class="bi bi-eye-slash" id="botao-senha" onclick="mostrarSenha()"></i>
                     </div>
                 </div>

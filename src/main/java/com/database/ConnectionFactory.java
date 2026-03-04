@@ -12,6 +12,12 @@ public class ConnectionFactory {
     public static Connection getConnection() throws SQLException {
         var url = dotenv.get("DB_URL");
 
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
         if (url == null) {
             throw new IllegalStateException("Environment variable 'DB_URL' not set");
         }

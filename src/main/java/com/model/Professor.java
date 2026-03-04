@@ -18,7 +18,8 @@ public class Professor {
     private UUID id;
 
     @NonNull
-    private HashSet<Disciplina> disciplinas;
+    @Builder.Default
+    private HashSet<Disciplina> disciplinas = new HashSet<>();
 
     @NonNull
     private String nome;

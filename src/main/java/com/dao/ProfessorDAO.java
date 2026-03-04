@@ -4,6 +4,7 @@ import com.model.Disciplina;
 import com.model.Professor;
 
 import java.sql.SQLException;
+import java.util.UUID;
 
 public class ProfessorDAO extends DAO {
     public ProfessorDAO() throws SQLException {
@@ -12,9 +13,9 @@ public class ProfessorDAO extends DAO {
 
     public Professor buscarPorUsuario(String usuario) throws SQLException {
         var sql = """
-                SELECT p.senha, p.nome, pd.id_disciplina
+                SELECT p.id, p.senha, p.nome, pd.id_disciplina
                 FROM professor p
-                JOIN professor_disciplina pd ON p.id = pd.id_professor
+                LEFT JOIN professor_disciplina pd ON p.id = pd.id_professor
                 WHERE p.usuario = ?
                 """;
 
@@ -25,12 +26,17 @@ public class ProfessorDAO extends DAO {
                 if (!rs.next()) return null;
 
                 var professor = Professor.builder()
+                        .id(rs.getObject("id", UUID.class))
+                        .usuario(usuario)
                         .senha(rs.getString("senha"))
                         .nome(rs.getString("nome"))
                         .build();
 
-                var disciplina = Disciplina.deCodigo(rs.getInt("id_disciplina"));
-                professor.adicionarDisciplina(disciplina);
+                var codDisciplina = rs.getObject("id_disciplina", Integer.class);
+                if (codDisciplina != null) {
+                    var disciplina = Disciplina.deCodigo(codDisciplina);
+                    professor.adicionarDisciplina(disciplina);
+                }
 
                 return professor;
             }

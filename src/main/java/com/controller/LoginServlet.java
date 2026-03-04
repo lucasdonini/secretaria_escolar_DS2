@@ -17,6 +17,6 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         var usuario = req.getParameter("usuario");
-        req.getRequestDispatcher(usuario.contains("@") ? LOGIN_ALUNO : LOGIN_PROFESSOR).forward(req, resp);
+        req.getRequestDispatcher(usuario.contains("@") ? LOGIN_PROFESSOR : LOGIN_ALUNO).forward(req, resp);
     }
 }
