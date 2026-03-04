@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+}
+
+body {
+    background-color: #d1a3ff; 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: #f0f0f0;
+    width: 900px;
+    height: 500px;
+    display: flex;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+#imagem {
+    max-width: 100%;
+    height: auto;
+}
+
+#imagem img {
+    height: 100%;
+}
+
+.form-side {
+    flex: 1.2;
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-form {
+    display: flex;
+    align-items: center;
+    gap: 65px;
+    margin-bottom: 40px;
+}
+
+.header-form h1 {
+    color: #4c1d95;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.header-form a {
+    font-size: 1.5rem;
+    color: #4c1d95;
+}
+
+.input {
+    margin-bottom: 20px;
+}
+
+.input label {
+    display: block;
+    color: #5c5c5c;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 12px 50px 12px 20px;
+    border: 1px solid #5c5c5c;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    outline: none;
+}
+
+.campo-senha {
+    position: relative;
+    display: flex;
+}
+
+.campo-senha i {
+    position: absolute;
+    font-size: 1.5em;
+    right: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+    color: #4c1d95;
+}
+
+.btn-entrar {
+    width: 100%;
+    padding: 15px;
+    background-color: #8b5cf6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+.btn-entrar:hover {
+    background-color: #7c3aed;
+}
+
+.footer-link {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.footer-link p {
+    font-size: 12px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.footer-link a {
+    color: #4c1d95;
+    text-decoration: none;
+    font-weight: bold;
+}

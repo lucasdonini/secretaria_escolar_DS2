@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    bottom: 0;
+    font-family: Poppins, sans-serif;
+}
+
+body {
+    background-color: #F7F7F8;
+}
+
+header {
+    background-color: #F7F7F8;
+    padding: 10px 55px 20px 55px;
+    box-shadow: 0px 1px 6px rgb(170, 170, 170);
+    height: 40px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#logo {
+    width: 140px;
+    height: 50px;
+}
+
+#professor {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#professor img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#professor p {
+    font-size: 14px;
+}
+
+/* MAIN */
+
+main {
+    margin-left: 88px;
+    margin-right: 88px;
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+
+#btn-voltar {
+    width: min-content;
+    padding: 8px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #585858;
+    font-size: 18px;
+    cursor: pointer
+}
+
+#btn-voltar:hover {
+    color: #ffffff;
+    background-color: #8E00FF;
+    transform: scale(1.05);
+    transition: all 0.3s ease-out;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    width: min-content;
+}
+
+/* DADOS DO ALUNO */
+
+.bloco-aluno {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+    background-color: #8E00FF;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+#icone-user {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #B48FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#icone-user i {
+    font-size: 60px;
+}
+
+/* ABAS DE NOTAS E OBSERVAÇÕES */
+.options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.options a,
+#aba-observações {
+    width: 49%;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 0px 1px 6px rgb(170, 170, 170);
+}
+
+#aba-notas {
+    display: flex;
+    gap: 15px;
+}
+
+#aba-observações {
+    background-color: #8E00FF;
+    color: white;
+}
+
+.options a:hover {
+    background-color: #8E00FF;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+#pre-observacoes {
+    align-items: center;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Estilo do número ao lado do título */
+#contador-obs {
+    background-color: #D9D9D9;
+    color: #585858;
+    padding: 2px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Container dos cards */
+#container-observacoes {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Estilo do Card de Observação (baseado na sua imagem) */
+.card-observacao {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.05);
+}
+
+.card-observacao h4 {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.card-observacao p {
+    font-size: 16px;
+    color: #555;
+}
+
+.card-observacao .data-obs {
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 10px;
+}
+
+#btn-adicionar-observacao {
+    border: none;
+    background-color: #8E00FF;
+    width: 250px;
+    padding: 8px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer
+}
+
+#btn-adicionar-observacao:hover {
+    background-color: #B48FFF;
+    transform: scale(1.05);
+    transition: all 0.3s ease-out;
+}
+
+#btn-adicionar-observacao i {
+    font-size: 20px;
+}
+
+#box-nova-observacao {
+    display: none;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#box-nova-observacao h4 {
+    font-size: 14px;
+    color: #8e00ff;
+    margin-bottom: 8px;
+}
+
+#box-nova-observacao textarea {
+    width: 100%;
+    height: 80px;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #f1f1f1;
+    resize: none;
+    box-sizing: border-box;
+}
+
+#box-nova-observacao .botoes-comentario {
+    display: flex;
+    justify-content: flex-end;
+    gap: 25px;
+}
+
+#btn-cancelar {
+    background: #D9D9D9;
+    color: #585858;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+ #btn-enviar {
+    background: #8E00FF;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
