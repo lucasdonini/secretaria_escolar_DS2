@@ -2,12 +2,12 @@
 <%@ page import="com.utils.AtributoSessao" %>
 <%@ page import="com.model.Aluno" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.model.Nota" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/taglibs.jsp" %>
 <%
-    var objSessao = session.getAttribute(AtributoSessao.PROFESSOR_LOGADO);
-    assert objSessao instanceof Professor;
-    var professor = (Professor) objSessao;
+    var professor = (Professor) session.getAttribute(AtributoSessao.PROFESSOR_LOGADO);
+    var alunos = (List<Aluno>) session.getAttribute(AtributoSessao.ALUNOS_PROFESSOR);
     
     var materias = professor.getDisciplinas().stream().map(Enum::name).toList();
     var displayMaterias = materias.isEmpty() ? "Nenhuma matéria" : String.join(", ", materias);
@@ -18,7 +18,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colégio Mémoria</title>
+    <title>Colégio Mémora</title>
     <link rel="stylesheet" href="telaInicial.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,6 +50,82 @@
             <h1>Bem-vindo, <%= professor.getNome() %>!</h1>
             <h3>Gerencie suas turmas</h3>
         </div>
+        
+        <div class="insights-container">
+            
+            <div class="insight-card">
+                <div class="icone">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                        <rect width="256" height="256" fill="none" />
+                        <line x1="32" y1="64" x2="32" y2="144" fill="none" stroke="currentColor" stroke-linecap="round"
+                              stroke-linejoin="round" stroke-width="16" />
+                        <path d="M56,216c15.7-24.08,41.11-40,72-40s56.3,15.92,72,40" fill="none" stroke="currentColor"
+                              stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                        <polygon points="224 64 128 96 32 64 128 32 224 64" fill="none" stroke="currentColor"
+                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                        <path d="M169.34,82.22a56,56,0,1,1-82.68,0" fill="none" stroke="currentColor"
+                              stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                    </svg>
+                </div>
+                <div class="insight-content">
+                    <h2><%= alunos.size() %></h2>
+                    <p>Total de alunos</p>
+                </div>
+            </div>
+            
+            <div class="insight-card">
+                <div class="icone">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                        <rect width="256" height="256" fill="none" />
+                        <path d="M32,216V56a8,8,0,0,1,8-8H216a8,8,0,0,1,8,8V216l-32-16-32,16-32-16L96,216,64,200Z"
+                              fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                              stroke-width="16" />
+                        <polyline points="64 160 96 96 128 160" fill="none" stroke="currentColor" stroke-linecap="round"
+                                  stroke-linejoin="round" stroke-width="16" />
+                        <line x1="72" y1="144" x2="120" y2="144" fill="none" stroke="currentColor"
+                              stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                        <line x1="144" y1="128" x2="192" y2="128" fill="none" stroke="currentColor"
+                              stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                        <line x1="168" y1="104" x2="168" y2="152" fill="none" stroke="currentColor"
+                              stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                    </svg>
+                </div>
+                <div class="insight-content">
+                    <h2><%=
+                      alunos.stream()
+                          .mapToInt(a -> a.getNotas().size())
+                          .sum()
+                    %></h2>
+                    <p>Notas lançadas</p>
+                </div>
+            </div>
+            <div class="insight-card">
+                <div class="icone">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                        <rect width="256" height="256" fill="none" />
+                        <polyline points="224 208 32 208 32 48" fill="none" stroke="currentColor" stroke-linecap="round"
+                                  stroke-linejoin="round" stroke-width="16" />
+                        <polyline points="200 72 128 144 96 112 32 176" fill="none" stroke="currentColor"
+                                  stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                        <polyline points="200 112 200 72 160 72" fill="none" stroke="currentColor"
+                                  stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+                    </svg>
+                </div>
+                <div class="insight-content">
+                    <h2><%=
+                    Math.round(alunos.stream()
+                        .flatMapToDouble(a ->
+                            a.getNotas()
+                                .stream()
+                                .mapToDouble(Nota::media)
+                        ).average()
+                        .orElse(0) * 100) / 100.0
+                    %></h2>
+                    <p>Média geral dos alunos</p>
+                </div>
+            </div>
+        
+        </div>
 
         <div class="search-text">
             <h2>Buscar aluno</h2>
@@ -67,7 +143,6 @@
                 <th>Nome</th>
             </tr>
             <%
-                var alunos = (List<Aluno>) session.getAttribute(AtributoSessao.ALUNOS_PROFESSOR);
                 var i = 0;
                 for (var aluno : alunos) {
             %>
