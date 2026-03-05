@@ -146,13 +146,16 @@
                 var i = 0;
                 for (var aluno : alunos) {
             %>
-            <tr class="<%= (i % 2 == 0) ? "fundo-escuro" : ""%>">
+            <tr
+                class="<%= (i % 2 == 0) ? "fundo-escuro" : ""%>"
+                onclick="gotoDetails('${pageContext.request.contextPath}', '<%= aluno.getMatricula() %>')">
                 <td><%= aluno.getMatricula() %></td>
-                <td><a href="${pageContext.request.contextPath}/pagina-professor/detalhes-do-aluno/telaNotas.html"><%= aluno.getNome() %></a></td>
+                <td><%= aluno.getNome() %></td>
             </tr>
             <% i++; } %>
         </table>
     </main>
+    <script src="tela-inicial.js"></script>
 </body>
 
 </html>

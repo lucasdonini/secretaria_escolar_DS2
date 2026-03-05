@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebFilter(urlPatterns = {"/professor/*", "/pagina-professor/*"})
 public class FiltroAutenticacaoProfessor extends HttpFilter {
@@ -18,7 +19,8 @@ public class FiltroAutenticacaoProfessor extends HttpFilter {
     protected void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain) throws IOException, ServletException {
         var sessao = req.getSession();
         var professor = sessao.getAttribute(AtributoSessao.PROFESSOR_LOGADO);
-        if (professor instanceof Professor) {
+        var alunos = sessao.getAttribute(AtributoSessao.ALUNOS_PROFESSOR);
+        if (professor instanceof Professor && alunos instanceof List) {
             chain.doFilter(req, resp);
             return;
         }

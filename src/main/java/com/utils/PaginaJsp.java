@@ -6,4 +6,5 @@ public class PaginaJsp {
     public static final String HOME = "/index.jsp";
     public static final String HOME_ALUNO = ""; // TODO: preencher valor real
     public static final String ERRO = "/erro.jsp";
+    public static final String DETALHE_NOTAS_PROFESSOR = "/pagina-professor/detalhes-do-aluno/telaNotas.jsp";
 }

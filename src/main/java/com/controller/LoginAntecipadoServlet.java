@@ -16,6 +16,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 @WebFilter("/pagina-login/*")
@@ -25,16 +26,20 @@ public class LoginAntecipadoServlet extends HttpFilter {
         var cookies = req.getCookies();
         var contextPath = req.getContextPath();
         var sessao = req.getSession();
+        var destinoFinal = sessao.getAttribute(AtributoSessao.DESTINO_FINAL);
 
         var professorSessao = sessao.getAttribute(AtributoSessao.PROFESSOR_LOGADO);
-        if (professorSessao instanceof Professor) {
-            resp.sendRedirect(contextPath + PaginaJsp.HOME_PROFESSOR);
+        var alunosProfessor = sessao.getAttribute(AtributoSessao.ALUNOS_PROFESSOR);
+        if (professorSessao instanceof Professor && alunosProfessor instanceof List) {
+            var destino = destinoFinal == null ? PaginaJsp.HOME_PROFESSOR : destinoFinal;
+            resp.sendRedirect(contextPath + destino);
             return;
         }
 
         var alunoSessao = sessao.getAttribute(AtributoSessao.ALUNO_LOGADO);
         if (alunoSessao instanceof Aluno) {
-            resp.sendRedirect(contextPath + PaginaJsp.HOME_ALUNO);
+            var destino = destinoFinal == null ? PaginaJsp.HOME_ALUNO : destinoFinal;
+            resp.sendRedirect(contextPath + destino);
             return;
         }
 
@@ -65,8 +70,9 @@ public class LoginAntecipadoServlet extends HttpFilter {
                 throw new RuntimeException(e);
             }
 
+            var destino = destinoFinal == null ? PaginaJsp.HOME_PROFESSOR : destinoFinal;
             sessao.setAttribute(AtributoSessao.PROFESSOR_LOGADO, professor);
-            resp.sendRedirect(contextPath + PaginaJsp.HOME_PROFESSOR);
+            resp.sendRedirect(contextPath + destino);
             return;
         }
 
@@ -83,8 +89,9 @@ public class LoginAntecipadoServlet extends HttpFilter {
                 throw new RuntimeException(e);
             }
 
+            var destino = destinoFinal == null ? PaginaJsp.HOME_ALUNO : destinoFinal;
             sessao.setAttribute(AtributoSessao.ALUNO_LOGADO, aluno);
-            resp.sendRedirect(contextPath + PaginaJsp.HOME_ALUNO);
+            resp.sendRedirect(contextPath + destino);
             return;
         }
 
